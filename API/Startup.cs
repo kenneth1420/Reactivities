@@ -25,7 +25,9 @@ namespace API
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {   services.ConfigureMySqlContext(Configuration);
+        {
+            services.ConfigureMySqlContext(Configuration);
+            services.ConfigureCors();
             services.AddControllers();
         }
 
@@ -38,10 +40,9 @@ namespace API
             }
 
             // app.UseHttpsRedirection();
-            
-            app.UseRouting();
-
             // app.UseAuthorization();
+            app.UseCors("CorsPolicy");
+            app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {
