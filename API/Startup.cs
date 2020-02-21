@@ -28,6 +28,7 @@ namespace API
         {
             services.ConfigureMySqlContext(Configuration);
             services.ConfigureCors();
+            services.ConfigureMediator();
             services.AddControllers();
         }
 
